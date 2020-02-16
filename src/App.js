@@ -6,6 +6,7 @@ import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
 import  "./App.css";
 import ShowsList from "./components/shows/ShowsList.js";
+import BookingsList from "./components/bookings/BookingsList.js";
 
 class App extends Component {
   constructor(props) {
@@ -72,6 +73,12 @@ class App extends Component {
               exact path="/:id/list_shows"
               render={props => (
                 <ShowsList {...props} />
+              )}
+            />
+            <Route
+              exact path="/list_bookings"
+              render={props => (
+                <BookingsList {...props} />
               )}
             />
           </Switch>

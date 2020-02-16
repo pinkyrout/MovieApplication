@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from "axios";
 import { Row, Card, Container, Button } from "reactstrap";
 import Movie2Icon from "../../assets/images/moviesIcon/Movie2Icon.webp";
@@ -59,11 +59,11 @@ class MoviesList extends Component {
   render() {
     const { movies } = this.state;
     return (
-      <React.Fragment>
+      <Fragment>
         <Container className="page-container">
           { movies.length !== 0 && this.renderMoviesList()}
         </Container>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }

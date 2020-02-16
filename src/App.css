@@ -120,3 +120,11 @@
 .booking-button {
   padding-left: 80px;
 }
+
+.booking-card {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  max-width: 500px;
+  max-height: 200px;
+  background-color: #e0d9b6;
+}

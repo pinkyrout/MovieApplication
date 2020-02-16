@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Row, Card, Container, Button, Modal, ModalBody, Col, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import { timeDisplayFormatter, getId } from '../../utils';
@@ -11,6 +11,7 @@ class ShowsList extends Component {
       isModalOpen: false,
       seats: [],
       selectedSeats: [],
+      selectedShowId: "",
     };
   }
 
@@ -49,6 +50,9 @@ class ShowsList extends Component {
     .catch(res => {
       this.setState({ isError: true })
     })
+    this.setState({
+      selectedShowId: showId,
+    });
     this.setModalVisibility(true);
   }
 
@@ -137,16 +141,22 @@ class ShowsList extends Component {
 
   renderBookingButton = () => {
     return (
-      <Button color="primary" onClick={() => {this.bookAndRenderTickets()}}>
+      <Button color="primary" onClick={() => {this.bookAndRenderBookings()}}>
         Confirm & Book Tickets
       </Button>
     )
   }
 
-  bookAndRenderTickets = () => {
+  bookAndRenderBookings = () => {
+    const { selectedShowId, selectedSeats } = this.state,
+      { history } = this.props;
     axios({
-      method: "get",
-      url: `http://localhost:3001/api/v1/shows/${showId}/seats`,
+      method: "post",
+      url: `http://localhost:3001/api/v1/bookings`,
+      data: {
+        show_id: selectedShowId,
+        seat_ids: selectedSeats.map(seat => { return seat.id})
+      },
       headers: {
         "Content-Type": "application/json"
       }
@@ -157,18 +167,18 @@ class ShowsList extends Component {
     .catch(res => {
       this.setState({ isError: true })
     })
-    this.setModalVisibility(false);
+    history.push("/list_bookings");
   }
 
   render () {
     const { isModalOpen } = this.state;
     return (
-      <React.Fragment>
+      <Fragment>
         <Container className="page-container">
           {this.renderUpcomingShows()}
           {isModalOpen && this.renderSeatsModal()}
         </Container>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
