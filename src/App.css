@@ -81,3 +81,42 @@
   max-width: 600px;
   max-height: 250px;
 }
+
+.show-card {
+  margin-top: 40px;
+  max-width: 600px;
+  max-height: 200px;
+}
+
+.select-button {
+  margin-top: 20px;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  cursor: pointer;
+}
+
+.seats-row {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.price-label {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #256f28;
+}
+
+.form-check {
+  position: inherit;
+  display: inline-block;
+}
+
+.booking-button {
+  padding-left: 80px;
+}
