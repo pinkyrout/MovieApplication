@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+.login-signup-box {
+  margin-left: 1100px !important;
+}
+
+.app-icon {
+  max-width: 120px;
+  max-height: 120px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.font-style {
+  margin-top: 30px;
+  color: #574da2;
+  font-weight: 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+  font-style: italic;
+  font-size: 50px;
+}
+
+.header-style {
+  background-color: #171616;
+}
+
+.movie-card {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  max-width: 600px;
+  min-height: 250px;
+}
+
+.movie-name {
+  padding-bottom: 5px;
+  padding-left: 50px;
+  padding-right: 20px;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.movie-poster {
+  max-width: 600px;
+  max-height: 250px;
+}
