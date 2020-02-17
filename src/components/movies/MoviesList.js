@@ -23,7 +23,7 @@ class MoviesList extends Component {
     .then(res => {
       this.setState({ movies: res.data });
     })
-    .catch(res => {
+    .catch(() => {
       this.setState({ isError: true })
     })
   }

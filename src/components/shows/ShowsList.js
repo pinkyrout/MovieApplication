@@ -27,7 +27,7 @@ class ShowsList extends Component {
     .then(res => {
       this.setState({ shows: res.data });
     })
-    .catch(res => {
+    .catch(() => {
       this.setState({ isError: true })
     })
   }
@@ -47,7 +47,7 @@ class ShowsList extends Component {
     .then(res => {
       this.setState({ seats: res.data });
     })
-    .catch(res => {
+    .catch(() => {
       this.setState({ isError: true })
     })
     this.setState({
@@ -99,7 +99,7 @@ class ShowsList extends Component {
       return (
         <FormGroup check>
           <Label check>
-            <Input type="checkbox" checked={selectedSeats.includes(seat)} onClick={() => this.setSelectedSeats(seat)} />
+            <Input type="checkbox" checked={selectedSeats.includes(seat) || seat.is_booked} onClick={() => this.setSelectedSeats(seat)} />
           </Label>
         </FormGroup>
       );
@@ -161,13 +161,12 @@ class ShowsList extends Component {
         "Content-Type": "application/json"
       }
     })
-    .then(res => {
-      this.setState({ seats: res.data });
+    .then(() => {
+      history.push("/list_bookings");
     })
-    .catch(res => {
+    .catch(() => {
       this.setState({ isError: true })
     })
-    history.push("/list_bookings");
   }
 
   render () {

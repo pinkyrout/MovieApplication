@@ -22,7 +22,7 @@ class BookingsList extends Component {
     .then(res => {
       this.setState({ bookings: res.data });
     })
-    .catch(res => {
+    .catch(() => {
       this.setState({ isError: true })
     })
   }
