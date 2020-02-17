@@ -43,6 +43,7 @@ class BookingsList extends Component {
                 <label className= "movie-name">Total Price: Rs {booking.price}</label>
                 <label className= "movie-name">Booked Seats Details: ({booking.seats.map(seat => { return ` ${seat.number} ` })})</label>
                 <label className= "movie-name">Show Start Time: {timeDisplayFormatter(booking.show_start_time)}</label>
+                <label className= "movie-name">Booked at: {booking.booked_at}</label>
               </Card>
             </div>
           )

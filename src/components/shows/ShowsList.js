@@ -174,6 +174,7 @@ class ShowsList extends Component {
     return (
       <Fragment>
         <Container className="page-container">
+          <h4 className="font-style"> Upcoming Shows </h4>
           {this.renderUpcomingShows()}
           {isModalOpen && this.renderSeatsModal()}
         </Container>
