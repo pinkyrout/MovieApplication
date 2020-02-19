@@ -28,7 +28,6 @@ class Index extends Component {
       }
     })
     .then(res => {
-      debugger
       this.setState({ movies: res.data, totalSize: res.data.length });
     })
     .catch(() => {
