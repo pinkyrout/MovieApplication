@@ -8,6 +8,8 @@ import ShowsList from "./components/shows/ShowsList.js";
 import BookingsList from "./components/bookings/BookingsList.js";
 import AdminDashboard from "./components/AdminDashboard.js";
 import Movies from "./components/movies/Index.js";
+import MoviesCreate from "./components/movies/Create.js";
+import MoviesEdit from "./components/movies/Edit.js";
 
 class App extends Component {
   constructor(props) {
@@ -86,6 +88,18 @@ class App extends Component {
               exact path="/admin_dashboard/movies"
               render={props => (
                 <Movies {...props} />
+              )}
+            />
+            <Route
+              exact path="/admin_dashboard/movies/create"
+              render={props => (
+                <MoviesCreate {...props} />
+              )}
+            />
+            <Route
+              exact path="/admin_dashboard/movies/:id/edit"
+              render={props => (
+                <MoviesEdit {...props} />
               )}
             />
           </Switch>
