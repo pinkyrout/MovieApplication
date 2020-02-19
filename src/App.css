@@ -129,10 +129,6 @@
   background-color: #e0d9b6;
 }
 
-.listing-table {
-
-}
-
 .navigation-bar {
   background-color: #384250;
   min-height: 1000px;
@@ -173,4 +169,14 @@
   padding-bottom: 5px;
   font-size: 25px;
   color: #4b7396;
+}
+
+.login-button {
+  margin-top: 40px;
+}
+
+.back-button {
+  margin-left: 400px;
+  margin-top: 40px;
+  color: ;
 }

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Card, Container } from "reactstrap";
+import { Row, Card, Container, Col, Button } from "reactstrap";
 import axios from "axios";
 import { timeDisplayFormatter } from "../../utils";
 
@@ -28,12 +28,18 @@ class BookingsList extends Component {
   }
 
   renderBookings = () => {
-    const { bookings } = this.state;
+    const { bookings } = this.state,
+      { history } = this.props;
     return (
       <div>
         <Row>
-          <h4 className="font-style"> Booked Tickets History </h4>
-        </Row>
+          <Col>
+            <h4 className="font-style"> Booked Tickets </h4>
+          </Col>
+          <Col>
+            <Button color="primary" onClick={() => {history.push("/")}} className="back-button">Back To Home</Button>
+          </Col>
+          </Row>
         <Row>
         { bookings.map( booking => {
           return (

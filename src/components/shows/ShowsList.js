@@ -170,11 +170,19 @@ class ShowsList extends Component {
   }
 
   render () {
-    const { isModalOpen } = this.state;
+    const { isModalOpen } = this.state,
+      { history } = this.props;
     return (
       <Fragment>
         <Container className="page-container">
-          <h4 className="font-style"> Upcoming Shows </h4>
+          <Row>
+            <Col>
+              <h4 className="font-style"> Upcoming Shows </h4>
+            </Col>
+            <Col>
+              <Button color="primary" onClick={() => {history.push("/")}} className="back-button">Back</Button>
+            </Col>
+          </Row>
           {this.renderUpcomingShows()}
           {isModalOpen && this.renderSeatsModal()}
         </Container>

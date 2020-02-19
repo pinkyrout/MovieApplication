@@ -59,7 +59,7 @@ class Authenticate extends Component {
 
     return (
       <div>
-        <div className="mt-4">
+        <div className="login-button">
           <Button onClick={() => {this.setModalVisibility(true)}}>Log In</Button>
         </div>
         <Modal size="md" isOpen={isModalOpen}>
