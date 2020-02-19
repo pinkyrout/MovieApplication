@@ -128,3 +128,40 @@
   max-height: 200px;
   background-color: #e0d9b6;
 }
+
+.listing-table {
+
+}
+
+.navigation-bar {
+  background-color: #384250;
+  min-height: 700px;
+}
+
+.nav-font {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: x-large;
+  color: #e4efee;
+}
+
+.page-link {
+  background-color: #8a939c !important;
+  border-color: #8a939c !important;
+}
+
+.table-headers {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 40px;
+  color: #4b7396;
+}
+
+.pagination {
+  padding-left: 150px !important;
+}
+
+.create-button {
+  margin-top: 30px;
+  color: ;
+}

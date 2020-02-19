@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./components/registrations/Login";
-import Signup from "./components/registrations/Signup";
+import Home from "./components/Home.js";
+import Authenticate from "./components/registrations/Authenticate.js";
 import  "./App.css";
 import ShowsList from "./components/shows/ShowsList.js";
 import BookingsList from "./components/bookings/BookingsList.js";
+import AdminDashboard from "./components/AdminDashboard.js";
+import Movies from "./components/movies/Index.js";
 
 class App extends Component {
   constructor(props) {
@@ -60,13 +61,7 @@ class App extends Component {
             <Route
               exact path="/login"
               render={props => (
-              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
-              )}
-            />
-            <Route
-              exact path="/signup"
-              render={props => (
-              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+              <Authenticate {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
             <Route
@@ -79,6 +74,18 @@ class App extends Component {
               exact path="/list_bookings"
               render={props => (
                 <BookingsList {...props} />
+              )}
+            />
+            <Route
+              exact path="/admin_dashboard"
+              render={props => (
+                <AdminDashboard {...props} />
+              )}
+            />
+            <Route
+              exact path="/admin_dashboard/movies"
+              render={props => (
+                <Movies {...props} />
               )}
             />
           </Switch>

@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import AppHeader from "./AppHeader.js";
 import MoviesList from "./movies/MoviesList.js";
+import Authenticate from "./registrations/Authenticate.js";
 
 class Home extends Component {
   constructor(props) {
@@ -19,16 +20,14 @@ class Home extends Component {
           <Col sm={10}>
             <AppHeader />
           </Col>
-          <Col sm={2}>
-            <div>
-              <Link to='/login'>Log In</Link>
-              <br></br>
-              <Link to='/signup'>Sign Up</Link>
-            </div>
+          <Col>
+            <Authenticate 
+              history={history}
+            />
           </Col>
         </Row>
         <Row>
-          <MoviesList 
+          <MoviesList
             history={history}
           />
         </Row>
