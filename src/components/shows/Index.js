@@ -49,7 +49,7 @@ class Index extends Component {
       },
       {
         dataField: 'is_full',
-        text: 'Is Full',
+        text: 'Full',
       },
       {
         dataField: 'movie_name',

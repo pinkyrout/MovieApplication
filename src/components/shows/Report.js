@@ -54,7 +54,7 @@ class Report extends Component {
       },
       {
         dataField: "is_booked",
-        text: "Is Booked",
+        text: "Booked",
       },
       {
         dataField: "number",
@@ -89,9 +89,26 @@ class Report extends Component {
   downloadActionButton = () => {
     return (
       <div>
-        <Button id="createMovie" color="success" onClick={() => {}} className="create-button">Download Report</Button>
+        <Button id="createMovie" color="success" onClick={() => {this.downloadReport()}} className="create-button">Download Report</Button>
       </div>
     );
+  }
+
+  downloadReport = () => {
+    const showId = getId(this.props);
+    axios({
+      method: "post",
+      url: `http://localhost:3001/api/v1/shows/${showId}/download_report`,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      window.open(`http://localhost:3001/${res.data.data.file_path}`);
+    })
+    .catch(() => {
+      this.setState({ isError: true })
+    })
   }
 
 	render () {

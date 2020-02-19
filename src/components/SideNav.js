@@ -30,6 +30,11 @@ class SideNav extends Component {
                 <label className="nav-font">Shows</label>
               </a>
             </NavItem>
+            <NavItem>
+              <a href={"/"}>
+                <label className="nav-font">Log Out</label>
+              </a>
+            </NavItem>
           </Nav>
         </aside>
       </div>
