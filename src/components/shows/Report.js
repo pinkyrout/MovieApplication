@@ -6,6 +6,7 @@ import { PageHeader, Row, Col, UncontrolledTooltip, Button } from "reactstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import SideNav from "../SideNav.js";
+import { timeDisplayFormatter } from "../../utils";
 
 class Report extends Component {
 	constructor(props) {
@@ -15,6 +16,7 @@ class Report extends Component {
       totalSize: 0,
       page: 1,
       sizePerPage: 10,
+      show: null,
     };
 	}
 
@@ -29,7 +31,11 @@ class Report extends Component {
       }
     })
     .then(res => {
-      this.setState({ seats: JSON.parse(res.data.seats), totalSize: JSON.parse(res.data.count) });
+      this.setState({
+        seats: JSON.parse(res.data.seats),
+        totalSize: JSON.parse(res.data.count),
+        show: JSON.parse(res.data.show),
+      });
     })
     .catch(() => {
       this.setState({ isError: true })
@@ -70,15 +76,27 @@ class Report extends Component {
       }
     })
     .then(res => {
-      this.setState({ seats: JSON.parse(res.data.seats), page: page, sizePerPage: sizePerPage });
+      this.setState({
+        seats: JSON.parse(res.data.seats),
+        page: page, sizePerPage: sizePerPage,
+      });
     })
     .catch(() => {
       this.setState({ isError: true })
     })
   }
 
+  downloadActionButton = () => {
+    return (
+      <div>
+        <Button id="createMovie" color="success" onClick={() => {}} className="create-button">Download Report</Button>
+      </div>
+    );
+  }
+
 	render () {
-		const { seats, page, totalSize, sizePerPage } = this.state;
+		const { seats, page, totalSize, sizePerPage, show } = this.state;
+		debugger
 		return (
       <Fragment>
         <Row>
@@ -86,7 +104,19 @@ class Report extends Component {
             <SideNav />
           </Col>
           <Col sm={10}>
-            <label className="table-headers"> Seats Report </label>
+            <Row>
+              <Col sm={8}>
+                <Row>
+                  <label className="report-header mt-4">Seats Report (Show on { show && show.date}  at {show && timeDisplayFormatter(show.start_time)}-{show && timeDisplayFormatter(show.end_time)})</label>
+                </Row>
+                <Row>
+                  <label className="report-header mb-4">{ show && show.movie_name}</label>
+                </Row>
+              </Col>
+              <Col>
+                {this.downloadActionButton()}
+              </Col>
+            </Row>
             <div className="listing-table">
               <BootstrapTable keyField='id'
                 remote={ { sort: true, pagination: true } }

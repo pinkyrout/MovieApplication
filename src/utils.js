@@ -1,7 +1,7 @@
 export function timeDisplayFormatter(time) {
   let formatted_time;
   if(time) {
-    let type = time > 1200 ? " pm" : " am";
+    let type = time >= 1200 ? " pm" : " am";
     formatted_time = formatTime(time);
     return formatted_time.slice(0, 2) + ":" + formatted_time.slice(2, 4) + type
   }
