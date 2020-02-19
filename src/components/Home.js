@@ -26,7 +26,7 @@ class Home extends Component {
             />
           </Col>
         </Row>
-        <Row>
+        <Row className="movies-list">
           <MoviesList
             history={history}
           />

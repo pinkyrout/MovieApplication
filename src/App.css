@@ -63,10 +63,11 @@
 }
 
 .movie-card {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   max-width: 600px;
   min-height: 250px;
+  background-color: #ccf4f7;
 }
 
 .movie-name {
@@ -74,7 +75,8 @@
   padding-left: 50px;
   padding-right: 20px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 35px;
+  color: #473c6f;
 }
 
 .movie-poster {
@@ -179,4 +181,9 @@
   margin-left: 400px;
   margin-top: 40px;
   color: ;
+}
+
+.movies-list {
+  background-color: #ccf4f7;
+  min-height: 500px;
 }

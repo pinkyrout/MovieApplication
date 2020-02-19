@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from "axios";
 import { Row, Card, Container, Button } from "reactstrap";
-import Movie2Icon from "../../assets/images/moviesIcon/Movie2Icon.webp";
+import MovieIcon from "../../assets/images/moviesIcon/MovieIcon.jpg";
 
 class MoviesList extends Component {
   constructor(props) {
@@ -41,10 +41,10 @@ class MoviesList extends Component {
             return (
               <div className='col-md-6' key={movie.id}>
                 <Card className="movie-card">
-                  <Button type="button" onClick= {() => {this.renderShowsList(movie.id)}}>
+                  <Button type="button" onClick= {() => {this.renderShowsList(movie.id)}} color="success">
                     Book Tickets
                   </Button>
-                  <img src={Movie2Icon} className="movie-poster" />
+                  <img src={MovieIcon} className="movie-poster" />
                 </Card>
                 <Row>
                   <h6 className="movie-name">{ movie.name }&nbsp;&nbsp;&nbsp; Rating: { movie.rating }</h6> 
