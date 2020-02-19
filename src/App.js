@@ -10,6 +10,7 @@ import AdminDashboard from "./components/AdminDashboard.js";
 import Movies from "./components/movies/Index.js";
 import MoviesCreate from "./components/movies/Create.js";
 import MoviesEdit from "./components/movies/Edit.js";
+import Shows from "./components/shows/Index.js";
 
 class App extends Component {
   constructor(props) {
@@ -100,6 +101,12 @@ class App extends Component {
               exact path="/admin_dashboard/movies/:id/edit"
               render={props => (
                 <MoviesEdit {...props} />
+              )}
+            />
+            <Route
+              exact path="/admin_dashboard/shows"
+              render={props => (
+                <Shows {...props} />
               )}
             />
           </Switch>

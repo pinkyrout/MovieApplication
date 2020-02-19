@@ -1,34 +1,32 @@
 import React, { Component, Fragment } from "react";
-import SideNav from "../SideNav.js";
+import { sizePerPage } from "./../../Constants";
 import axios from "axios";
 import { PageHeader, Row, Col, UncontrolledTooltip, Button } from "reactstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import { sizePerPage, CREATE } from "./../../Constants";
-import { Link } from "react-router-dom";
+import SideNav from "../SideNav.js";
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
+      shows: [],
+      totalSize: 0,
       page: 1,
       sizePerPage: sizePerPage,
-      totalSize: 0,
     };
   }
 
   componentDidMount() {
     axios({
       method: "get",
-      url: "http://localhost:3001/api/v1/movies",
-      params: { is_admin: true },
+      url: "http://localhost:3001/api/v1/shows",
       headers: {
         "Content-Type": "application/json"
       }
     })
     .then(res => {
-      this.setState({ movies: res.data, totalSize: res.data.length });
+      this.setState({ shows: res.data, totalSize: res.data.length });
     })
     .catch(() => {
       this.setState({ isError: true })
@@ -38,16 +36,24 @@ class Index extends Component {
   columns = () => {
     return [
       {
-        dataField: 'name',
+        dataField: 'start_time',
+        text: 'Show Start Time',
+      },
+      {
+        dataField: 'end_time',
+        text: 'Show End Time',
+      },
+      {
+        dataField: 'date',
+        text: 'Show Date',
+      },
+      {
+        dataField: 'is_full',
+        text: 'Is Full',
+      },
+      {
+        dataField: 'movie_name',
         text: 'Movie Name',
-      },
-      {
-        dataField: 'rating',
-        text: 'Movie Rating',
-      },
-      {
-        dataField: 'is_active',
-        text: 'Is Active',
       },
       {
         dataField: 'action',
@@ -61,45 +67,17 @@ class Index extends Component {
     ];
   }
 
-  newActionButton() {
-    const { history } = this.props;
-    return (
-      <div>
-        <Button id="createMovie" color="success" onClick={() => {history.push("/admin_dashboard/movies/create")}} className="create-button">Create</Button>
-      </div>
-    );
-  }
-
-  deleteMovie = movieId => {
-    const { history } = this.props,
-      { movies } = this.state;
-    axios({
-      method: "delete",
-      url: `http://localhost:3001/api/v1/movies/${movieId}`,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => {
-      this.setState({ movies: movies.filter(movie => movie.id !== movieId) });
-    })
-    .catch(() => {
-      this.setState({ isError: true })
-    })
-  } 
-
   actionButton = (url, row) => {
     const { history } = this.props;
     return (
       <div>
-        <Button color="primary" onClick={() => {history.push(`/admin_dashboard/movies/${row.id}/edit`)}} >Edit</Button>{"  "}
-        <Button color="danger" onClick={() => this.deleteMovie(row.id)} >Delete</Button>
+        <Button color="primary" onClick={() => {history.push(`/admin_dashboard/movies/${row.id}/edit`)}} >Show Report</Button>
       </div>
     )
   }
 
   render () {
-    const { movies, page, totalSize } = this.state;
+    const { shows, page, totalSize } = this.state;
     return (
       <Fragment>
           <Row>
@@ -107,18 +85,11 @@ class Index extends Component {
               <SideNav />
             </Col>
             <Col sm={10}>
-              <Row>
-                <Col sm={8}>
-                <label className="table-headers"> Movies List </label>
-                </Col>
-                <Col>
-                  {this.newActionButton()}
-                </Col>
-              </Row>
+              <label className="table-headers"> Shows List </label>
               <div className="listing-table">
                 <BootstrapTable keyField='id'
                   remote={ { sort: true, pagination: true } }
-                  data={ movies }
+                  data={ shows }
                   noDataIndication="No Data Found"
                   columns={this.columns()}
                   bordered={ false }

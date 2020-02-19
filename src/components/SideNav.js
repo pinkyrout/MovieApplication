@@ -10,10 +10,6 @@ class SideNav extends Component {
     };
   }
 
-  toggleNavbar = () => {
-
-  }
-
   render() {
     return (
       <div className="navigation-bar">
@@ -27,6 +23,11 @@ class SideNav extends Component {
             <NavItem>
               <a href={"/admin_dashboard/movies"}>
                 <label className="nav-font">Movies</label>
+              </a>
+            </NavItem>
+            <NavItem>
+              <a href={"/admin_dashboard/shows"}>
+                <label className="nav-font">Shows</label>
               </a>
             </NavItem>
           </Nav>
