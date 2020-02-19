@@ -26,7 +26,7 @@ class Authenticate extends Component {
     axios({
       method: "post",
       url: `http://localhost:3001/api/v1/users/authenticate_user`,
-      params: {
+      data: {
         email: email,
         password: password
       },

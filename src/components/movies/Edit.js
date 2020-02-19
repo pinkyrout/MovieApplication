@@ -11,7 +11,7 @@ class Edit extends Component {
     this.state = {
       name: "",
       rating: null,
-      is_active: false,
+      isActive: false,
       isError: false,
     };
   }
@@ -29,7 +29,7 @@ class Edit extends Component {
       this.setState({
         name: res.data.name,
         rating: res.data.rating,
-        is_active: res.data.is_active,
+        isActive: res.data.is_active,
       });
     })
     .catch(() => {
@@ -38,7 +38,7 @@ class Edit extends Component {
   }
 
   updateMovie = () => {
-    const { name, rating, is_active } = this.state,
+    const { name, rating, isActive } = this.state,
       { history } = this.props,
       id = getId(this.props);
     axios({
@@ -47,7 +47,7 @@ class Edit extends Component {
       params: {
         name: name,
         rating: rating,
-        is_active: is_active
+        is_active: isActive
       },
       headers: {
         "Content-Type": "application/json"
@@ -62,7 +62,7 @@ class Edit extends Component {
   }
 
   render () {
-    const { name, rating, is_active } = this.state;
+    const { name, rating, isActive } = this.state;
     return (
       <Fragment>
         <Row>
@@ -85,7 +85,7 @@ class Edit extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Label>Is Active</Label>
-                  <Input type="select" value={is_active} onChange={e => this.setState({ is_active: e.target.value })} >
+                  <Input type="select" value={isActive} onChange={e => this.setState({ isActive: e.target.value })} >
                     <option>true</option>
                     <option>false</option>
                   </Input>

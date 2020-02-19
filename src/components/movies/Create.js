@@ -9,20 +9,22 @@ class Create extends Component {
     super(props);
     this.state = {
       name: "",
-      rating: null,
+      rating: "",
       isError: false,
+      isActive: false,
     };
   }
 
   createMovie = () => {
-    const { name, rating } = this.state,
+    const { name, rating, isActive } = this.state,
       { history } = this.props;
     axios({
       method: "post",
       url: "http://localhost:3001/api/v1/movies",
       params: {
         name: name,
-        rating: rating
+        rating: rating,
+        is_active: isActive,
       },
       headers: {
         "Content-Type": "application/json"
@@ -37,6 +39,7 @@ class Create extends Component {
   }
 
   render () {
+    const { name, rating, isActive } = this.state;
     return (
       <Fragment>
         <Row>
@@ -51,13 +54,20 @@ class Create extends Component {
                 <Form className="ml-4">
                 <FormGroup>
                   <Label>Name</Label>
-                  <Input type="email" value={null} onChange={e => this.setState({ name: e.target.value })} />
+                  <Input type="email" value={name} onChange={e => this.setState({ name: e.target.value })} />
                 </FormGroup>
                 <FormGroup>
                   <Label>Rating</Label>
-                  <Input type="number" value={null} onChange={e => this.setState({ rating: e.target.value })} />
+                  <Input type="number" value={rating} onChange={e => this.setState({ rating: e.target.value })} />
                 </FormGroup>
-                <Button type="button" color="primary" onClick={() => {this.createMovie()}}>
+                <FormGroup>
+                  <Label>Is Active</Label>
+                  <Input type="select" value={isActive} onChange={e => this.setState({ isActive: e.target.value })} >
+                    <option>true</option>
+                    <option>false</option>
+                  </Input>
+                </FormGroup>
+                <Button type="button" color="primary" onClick={() => {this.createMovie()}} className="mt-4">
                   Create
                 </Button>
               </Form>
