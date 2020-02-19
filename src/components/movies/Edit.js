@@ -17,10 +17,10 @@ class Edit extends Component {
   }
 
   componentDidMount() {
-    const id = getId(this.props);
+    const movieId = getId(this.props);
     axios({
       method: "get",
-      url: `http://localhost:3001/api/v1/movies/${id}/edit`,
+      url: `http://localhost:3001/api/v1/movies/${movieId}/edit`,
       headers: {
         "Content-Type": "application/json"
       }

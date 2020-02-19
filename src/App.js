@@ -11,6 +11,7 @@ import Movies from "./components/movies/Index.js";
 import MoviesCreate from "./components/movies/Create.js";
 import MoviesEdit from "./components/movies/Edit.js";
 import Shows from "./components/shows/Index.js";
+import ShowReport from "./components/shows/Report.js";
 
 class App extends Component {
   constructor(props) {
@@ -107,6 +108,12 @@ class App extends Component {
               exact path="/admin_dashboard/shows"
               render={props => (
                 <Shows {...props} />
+              )}
+            />
+            <Route
+              exact path="/admin_dashboard/shows/:id/report"
+              render={props => (
+                <ShowReport {...props} />
               )}
             />
           </Switch>

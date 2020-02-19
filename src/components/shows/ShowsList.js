@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 import { Row, Card, Container, Button, Modal, ModalBody, Col, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
-import { timeDisplayFormatter, getId } from '../../utils';
+import { timeDisplayFormatter, getId } from "../../utils";
 
 class ShowsList extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class ShowsList extends Component {
       }
     })
     .then(res => {
-      this.setState({ seats: res.data });
+      this.setState({ seats: JSON.parse(res.data.seats) });
     })
     .catch(() => {
       this.setState({ isError: true })

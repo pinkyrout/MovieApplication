@@ -71,7 +71,7 @@ class Index extends Component {
     const { history } = this.props;
     return (
       <div>
-        <Button color="primary" onClick={() => {history.push(`/admin_dashboard/movies/${row.id}/edit`)}} >Show Report</Button>
+        <Button color="primary" onClick={() => {history.push(`/admin_dashboard/shows/${row.id}/report`)}} >Show Report</Button>
       </div>
     )
   }
