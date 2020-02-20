@@ -6,7 +6,6 @@ import Authenticate from "./components/registrations/Authenticate.js";
 import  "./App.css";
 import ShowsList from "./components/shows/ShowsList.js";
 import BookingsList from "./components/bookings/BookingsList.js";
-import AdminDashboard from "./components/AdminDashboard.js";
 import Movies from "./components/movies/Index.js";
 import MoviesCreate from "./components/movies/Create.js";
 import MoviesEdit from "./components/movies/Edit.js";
@@ -47,12 +46,6 @@ class App extends Component {
               exact path="/list_bookings"
               render={props => (
                 <BookingsList {...props} />
-              )}
-            />
-            <Route
-              exact path="/admin_dashboard"
-              render={props => (
-                <AdminDashboard {...props} />
               )}
             />
             <Route

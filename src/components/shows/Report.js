@@ -20,6 +20,13 @@ class Report extends Component {
     };
 	}
 
+  componentWillMount() {
+    const { history } = this.props;
+    if (localStorage.getItem("loginToken") === null) {
+      history.push("/");
+    }
+  }
+
 	componentDidMount() {
     const showId = getId(this.props);
     axios({

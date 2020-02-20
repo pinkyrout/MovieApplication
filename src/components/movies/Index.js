@@ -18,6 +18,13 @@ class Index extends Component {
     };
   }
 
+  componentWillMount() {
+    const { history } = this.props;
+    if (localStorage.getItem("loginToken") === null) {
+      history.push("/");
+    }
+  }
+
   componentDidMount() {
     axios({
       method: "get",

@@ -33,7 +33,8 @@ class Authenticate extends Component {
         "Content-Type": "application/json"
       }
     })
-    .then(() => {
+    .then(res => {
+      localStorage.setItem("loginToken", res.data.data);
       history.push("/admin_dashboard/movies");
     })
     .catch(() => {

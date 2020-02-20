@@ -16,6 +16,13 @@ class Edit extends Component {
     };
   }
 
+  componentWillMount() {
+    const { history } = this.props;
+    if (localStorage.getItem("loginToken") === null) {
+      history.push("/");
+    }
+  }
+
   componentDidMount() {
     const movieId = getId(this.props);
     axios({

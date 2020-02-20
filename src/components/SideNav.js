@@ -10,6 +10,10 @@ class SideNav extends Component {
     };
   }
 
+  clearCookies = () => {
+    localStorage.clear();
+  }
+
   render() {
     return (
       <div className="navigation-bar">
@@ -32,7 +36,7 @@ class SideNav extends Component {
             </NavItem>
             <NavItem>
               <a href={"/"}>
-                <label className="nav-font">Log Out</label>
+                <label className="nav-font" onClick={() => {this.clearCookies()}}>Log Out</label>
               </a>
             </NavItem>
           </Nav>

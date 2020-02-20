@@ -15,6 +15,13 @@ class Create extends Component {
     };
   }
 
+  componentWillMount() {
+    const { history } = this.props;
+    if (localStorage.getItem("loginToken") === null) {
+      history.push("/");
+    }
+  }
+
   createMovie = () => {
     const { name, rating, isActive } = this.state,
       { history } = this.props;
