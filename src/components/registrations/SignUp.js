@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Button, Modal, ModalBody, Col, Row, Form, FormGroup, Label, Input, FormText, Alert } from "reactstrap";
 
-class Authenticate extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       isModalOpen: false,
+      userName: "",
       email: "",
       password: "",
       isError: false,
@@ -19,15 +20,16 @@ class Authenticate extends Component {
     });
   }
 
-  loginUser = () => {
-    const { email, password } = this.state,
+  createUser = () => {
+    const { email, password, userName } = this.state,
       { history } = this.props;
     axios({
       method: "post",
-      url: `http://localhost:3001/api/v1/users/authenticate_user`,
+      url: `http://localhost:3001/api/v1/users`,
       data: {
         email: email,
-        password: password
+        password: password,
+        username: userName
       },
       headers: {
         "Content-Type": "application/json"
@@ -44,7 +46,7 @@ class Authenticate extends Component {
   renderAlertMessage = () => {
     return (
       <Alert color="danger" toggle={this.onAlertDismiss}>
-        Authentication failed. Please enter valid credentials.
+        SignUp Failed. Please enter valid values.
       </Alert>
     );
   }
@@ -54,19 +56,19 @@ class Authenticate extends Component {
   }
 
   render () {
-    const { isModalOpen, email, password, isError } = this.state;
+    const { isModalOpen, userName, email, password, isError } = this.state;
 
     return (
       <div>
         <div className="login-button">
-          <Button onClick={() => {this.setModalVisibility(true)}}>Log In</Button>
+          <Button onClick={() => {this.setModalVisibility(true)}}>Sign Up</Button>
         </div>
         <Modal size="md" isOpen={isModalOpen}>
           <ModalBody>
             {isError && this.renderAlertMessage()}
             <Row>
               <Col sm={11} align="center">
-                <b>Login</b>
+                <b>Sign Up</b>
               </Col>
               <Col sm={1} align="right" onClick={() => this.setModalVisibility(false)}>
                 <span className="close">x</span>
@@ -75,6 +77,10 @@ class Authenticate extends Component {
             <Row>
               <Form className="ml-4">
                 <FormGroup>
+                  <Label>User Name</Label>
+                  <Input type="plaintext" value={userName} onChange={e => this.setState({ userName: e.target.value })} />
+                </FormGroup>
+                <FormGroup>
                   <Label>Email</Label>
                   <Input type="email" value={email} onChange={e => this.setState({ email: e.target.value })} />
                 </FormGroup>
@@ -82,8 +88,8 @@ class Authenticate extends Component {
                   <Label>Password</Label>
                   <Input type="password" value={password} onChange={e => this.setState({ password: e.target.value })} />
                 </FormGroup>
-                <Button type="button" color="primary" onClick={this.loginUser}>
-                  Submit
+                <Button type="button" color="primary" onClick={this.createUser}>
+                  Sign Up
                 </Button>
               </Form>
             </Row>
@@ -94,4 +100,4 @@ class Authenticate extends Component {
   }
 }
 
-export default Authenticate;
+export default SignUp;

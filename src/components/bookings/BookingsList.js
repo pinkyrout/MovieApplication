@@ -45,11 +45,11 @@ class BookingsList extends Component {
           return (
             <div className='col-md-6' key={booking.id}>
               <Card className="booking-card">
-                <label className= "movie-name">Movie Name: {booking.movie_name}</label>
-                <label className= "movie-name">Total Price: Rs {booking.price}</label>
-                <label className= "movie-name">Booked Seats Details: ({booking.seats.map(seat => { return ` ${seat.number} ` })})</label>
-                <label className= "movie-name">Show Start Time: {timeDisplayFormatter(booking.show_start_time)}</label>
-                <label className= "movie-name">Booked at: {booking.booked_at}</label>
+                <label className= "listing-font">Movie Name: {booking.movie_name}</label>
+                <label className= "listing-font">Total Price: Rs {booking.price}</label>
+                <label className= "listing-font">Booked Seats Details: ({booking.seats.map(seat => { return ` ${seat.number} ` })})</label>
+                <label className= "listing-font">Show Start Time: {timeDisplayFormatter(booking.show_start_time)}</label>
+                <label className= "listing-font">Booked at: {booking.booked_at}</label>
               </Card>
             </div>
           )

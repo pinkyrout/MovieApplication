@@ -32,9 +32,9 @@ class Report extends Component {
     })
     .then(res => {
       this.setState({
-        seats: JSON.parse(res.data.seats),
-        totalSize: JSON.parse(res.data.count),
-        show: JSON.parse(res.data.show),
+        seats: res.data.seats,
+        totalSize: res.data.count,
+        show: res.data.show,
       });
     })
     .catch(() => {
@@ -77,7 +77,7 @@ class Report extends Component {
     })
     .then(res => {
       this.setState({
-        seats: JSON.parse(res.data.seats),
+        seats: res.data.seats,
         page: page, sizePerPage: sizePerPage,
       });
     })

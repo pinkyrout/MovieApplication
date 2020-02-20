@@ -175,6 +175,7 @@
 
 .login-button {
   margin-top: 40px;
+  margin-right: 10px;
 }
 
 .back-button {
@@ -186,4 +187,13 @@
 .movies-list {
   background-color: #ccf4f7;
   min-height: 500px;
+}
+
+.listing-font {
+  padding-bottom: 5px;
+  padding-left: 50px;
+  padding-right: 20px;
+  font-style: italic;
+  font-size: 20px;
+  color: #473c6f;
 }

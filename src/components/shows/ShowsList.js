@@ -45,7 +45,7 @@ class ShowsList extends Component {
       }
     })
     .then(res => {
-      this.setState({ seats: JSON.parse(res.data.seats) });
+      this.setState({ seats: res.data.seats });
     })
     .catch(() => {
       this.setState({ isError: true })
@@ -71,9 +71,9 @@ class ShowsList extends Component {
             return (
               <div className='col-md-6' key={show.id}>
                 <Card className="show-card">
-                  <label className= "movie-name">{show.screen} </label>
-                  <label className= "movie-name"> Date: {show.date} </label>
-                  <label className= "movie-name"> Show Time: ({this.getShowTime(show)}) </label>
+                  <label className= "listing-font">{show.screen} </label>
+                  <label className= "listing-font"> Date: {show.date} </label>
+                  <label className= "listing-font"> Show Time: ({this.getShowTime(show)}) </label>
                   <Button color="primary" size="lg" onClick={() => this.getSeatsAndOpenModal(show.id)}>Select Seats</Button>
                 </Card>
               </div>
